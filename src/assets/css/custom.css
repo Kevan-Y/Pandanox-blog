@@ -1,1 +1,6 @@
 /* your styles go here */
+.text-muted {
+  overflow-y: hidden;
+  max-height: 65px;
+  margin-bottom: 10px;
+}

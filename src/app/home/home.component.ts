@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BlogPost } from '../BlogPost';
+import blogData from '../blogData.json';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  blogPosts: Array<BlogPost> = blogData;
 
-  ngOnInit() {
-  }
+  latestPosts: Array<BlogPost> = this.blogPosts.slice(0, 3);
 
+  ngOnInit() {}
 }
