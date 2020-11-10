@@ -12,7 +12,5 @@ export class BlogComponent implements OnInit {
 
   blogPosts: Array<BlogPost> = blogData;
 
-  ngOnInit() {
-    console.log(blogData);
-  }
+  ngOnInit() {}
 }
