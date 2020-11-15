@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,29 +16,28 @@ import { LatestPostsComponent } from './latest-posts/latest-posts.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { TagsComponent } from './tags/tags.component';
 import { PostDataComponent } from './post-data/post-data.component';
+import { PagingComponent } from './paging/paging.component';
 
 @NgModule({
-  declarations: [							
+  declarations: [
     AppComponent,
-      HeaderComponent,
-      FooterComponent,
-      HomeComponent,
-      BlogComponent,
-      PostComponent,
-      PageNotFoundComponent,
-      PageNotFoundComponent,
-      AppPostCardComponent,
-      SearchWidgetComponent,
-      LatestPostsComponent,
-      CategoriesComponent,
-      TagsComponent,
-      PostDataComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    BlogComponent,
+    PostComponent,
+    PageNotFoundComponent,
+    PageNotFoundComponent,
+    AppPostCardComponent,
+    SearchWidgetComponent,
+    LatestPostsComponent,
+    CategoriesComponent,
+    TagsComponent,
+    PostDataComponent,
+    PagingComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
