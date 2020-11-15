@@ -20,7 +20,7 @@ export class PostService {
 
   getPostbyId(id): Observable<BlogPost> {
     return this.http.get<BlogPost>(
-      `https://web422-blogs-api.herokuapp.com/api/${id}`
+      `https://web422-blogs-api.herokuapp.com/api/posts/${id}`
     );
   }
 
