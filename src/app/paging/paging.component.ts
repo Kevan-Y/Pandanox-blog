@@ -11,10 +11,10 @@ export class PagingComponent implements OnInit {
   @Output() newPage = new EventEmitter();
   ngOnInit(): void {}
 
-  nextPage() {
+  nextPage(): void {
     this.newPage.emit(this.page + 1);
   }
-  previousPage() {
+  previousPage(): void {
     if (this.page > 1) this.newPage.emit(this.page - 1);
   }
 }

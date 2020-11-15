@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   querySub: any;
   blogPosts: Array<BlogPost>;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.querySub = this.route.queryParams.subscribe((params) => {
       if (params['tag']) {
         this.tag = params['tag'];
@@ -36,18 +36,19 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  getPage(num) {
+  getPage(num): void {
     this._postService
       .getPosts(num, this.tag, this.category)
       .subscribe((data) => {
         if (data.length > 0) {
           this.blogPosts = data;
           this.page = num;
+          window.scrollTo(0, 0);
         }
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.querySub) this.querySub.unsubscribe();
   }
 }
