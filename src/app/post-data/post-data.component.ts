@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BlogPost } from '../BlogPost';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Comment } from '../Comment';
 
 @Component({
   selector: 'app-post-data',
@@ -11,20 +13,35 @@ import { ActivatedRoute } from '@angular/router';
 export class PostDataComponent implements OnInit {
   constructor(
     private _postService: PostService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private route: Router
   ) {}
   querySub: any;
-
   post: BlogPost;
-
+  commentName: string;
+  commentText: string;
+  mydate: string;
   ngOnInit(): void {
-    this.querySub = this.route.params.subscribe((params) => {
+    this.querySub = this.activatedRoute.params.subscribe((params) => {
       this._postService
         .getPostbyId(params['id'])
-        .subscribe((data) => (this.post = data));
+        .subscribe((data) =>
+          data['message'] ? (this.post = null) : (this.post = data)
+        );
     });
   }
+  submitComment(): void {
+    this.post.comments.push({
+      author: this.commentName,
+      comment: this.commentText,
+      date: new Date(),
+    });
 
+    this._postService.updatePostById(this.post._id, this.post).subscribe(() => {
+      this.commentName = '';
+      this.commentText = '';
+    });
+  }
   ngOnDestroy(): void {
     if (this.querySub) this.querySub.unsubscribe();
   }

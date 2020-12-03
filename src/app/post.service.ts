@@ -38,7 +38,7 @@ export class PostService {
 
   getAllPosts(): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(
-      `https://web422-blogs-api.herokuapp.com/api/posts?page=1&perPage=Number.MAX_SAFE_INTEGER`
+      `https://web422-blogs-api.herokuapp.com/api/posts?page=1&perPage=${Number.MAX_SAFE_INTEGER}`
     );
   }
 

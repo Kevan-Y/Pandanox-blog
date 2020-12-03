@@ -2,7 +2,7 @@ import { Comment } from './Comment';
 export class BlogPost {
   _id: string;
   title: string;
-  postDate: string;
+  postDate: Date;
   featuredImage: string;
   post: string;
   postedBy: string;
