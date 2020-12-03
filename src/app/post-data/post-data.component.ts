@@ -1,9 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogPost } from '../BlogPost';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Comment } from '../Comment';
 
 @Component({
   selector: 'app-post-data',
@@ -23,11 +22,16 @@ export class PostDataComponent implements OnInit {
   mydate: string;
   ngOnInit(): void {
     this.querySub = this.activatedRoute.params.subscribe((params) => {
-      this._postService
-        .getPostbyId(params['id'])
-        .subscribe((data) =>
-          data['message'] ? (this.post = null) : (this.post = data)
-        );
+      this._postService.getPostbyId(params['id']).subscribe((data) => {
+        if (data['message']) this.post = null;
+        else {
+          this.post = data;
+          this.post.views++;
+          this._postService
+            .updatePostById(this.post._id, this.post)
+            .subscribe();
+        }
+      });
     });
   }
   submitComment(): void {
