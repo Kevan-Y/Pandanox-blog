@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './post/post.component';
-import { PageNotFoundComponent } from './Page-not-found/Page-not-found.component';
 import { AppPostCardComponent } from './app-post-card/app-post-card.component';
 import { SearchWidgetComponent } from './search-widget/search-widget.component';
 import { LatestPostsComponent } from './latest-posts/latest-posts.component';
@@ -21,6 +20,7 @@ import { FooterPostsComponent } from './footer-posts/footer-posts.component';
 import { PostsTableComponent } from './posts-table/posts-table.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { PageNotFoundsComponent } from './page-not-founds/page-not-founds.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,6 @@ import { NewPostComponent } from './new-post/new-post.component';
     HomeComponent,
     BlogComponent,
     PostComponent,
-    PageNotFoundComponent,
-    PageNotFoundComponent,
     AppPostCardComponent,
     SearchWidgetComponent,
     LatestPostsComponent,
@@ -43,6 +41,7 @@ import { NewPostComponent } from './new-post/new-post.component';
     PostsTableComponent,
     EditPostComponent,
     NewPostComponent,
+    PageNotFoundsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
