@@ -15,7 +15,7 @@
       <div class="d-flex align-items-center flex-wrap">
         <div class="date"><i class="icon-clock"></i> {{post.postDate | date:'mediumDate'}}</div>
         <div class="views"><i class="icon-eye"></i> {{post.views}}</div>
-        <div class="comments meta-last"><i class="icon-comment"></i>{{post.comments.length}}</div>
+        <div class="comments meta-last" *ngIf="post.comments"><i class="icon-comment"></i>{{post.comments.length}}</div>
       </div>
     </div>
     <div class="post-body" [innerHTML]="post.post">
@@ -24,7 +24,8 @@
         *ngFor="let tag of post.tags">{{tag}}</a></div>
     <div class="post-comments">
       <header>
-        <h3 class="h6">Post Comments<span class="no-of-comments">({{post.comments.length}})</span></h3>
+        <h3 class="h6">Post Comments<span class="no-of-comments" *ngIf="post.comments">({{post.comments.length}})</span>
+        </h3>
       </header>
 
       <div class="comment" *ngFor="let comment of post.comments">

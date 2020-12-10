@@ -23,14 +23,9 @@ export class PostDataComponent implements OnInit {
   ngOnInit(): void {
     this.querySub = this.activatedRoute.params.subscribe((params) => {
       this._postService.getPostbyId(params['id']).subscribe((data) => {
-        if (data['message']) this.post = null;
-        else {
-          this.post = data;
-          this.post.views++;
-          this._postService
-            .updatePostById(this.post._id, this.post)
-            .subscribe();
-        }
+        this.post = data;
+        this.post.views++;
+        this._postService.updatePostById(this.post._id, this.post).subscribe();
       });
     });
   }
